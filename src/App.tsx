@@ -1,10 +1,16 @@
-// App.tsx
 import React from 'react';
-import {TranslatorForm} from './components/TranslatorForm/TranslatorForm';
-const App: React.FC = () => {
+import './App.css'; // Dodaj własne style jeśli są potrzebne
+import {Footer} from './components/Footer/Footer';
+import {Container} from './components/Container/Container';
+
+const App = () => {
+	// const [sourceLanguage, setSourceLanguage] = useState('');
+	// const [targetLanguage, setTargetLanguage] = useState('');
+
 	return (
 		<>
-			<TranslatorForm />
+			<Container />
+			<Footer />
 		</>
 	);
 };
