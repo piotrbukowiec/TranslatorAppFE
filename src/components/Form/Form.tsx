@@ -24,7 +24,8 @@ export const Form: React.FC = () => {
 
 		if (res.ok) {
 			const result = await res.json();
-			setTranslatedText(result.text);
+			console.log('Got translated text from server; ' + result.translatedText);
+			setTranslatedText(result.translatedText);
 		} else {
 			console.error('Error while fetching translation');
 		}
