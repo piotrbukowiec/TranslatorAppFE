@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 interface Props {
 	text: string;
-	handleClick: () => void;
 }
-export const TranslatedTextInput = ({text, handleClick}: Props) => {
+export const TranslatedTextInput = ({ text }: Props) => {
+	const [translatedText, setTranslatedText] = useState(text);
 	return (
 		<input
 			type='text'
@@ -12,7 +12,7 @@ export const TranslatedTextInput = ({text, handleClick}: Props) => {
 			placeholder='Przetłumaczony tekst'
 			readOnly
 			value={text}
-			onClick={handleClick}
+			onClick={() => navigator.clipboard.writeText(translatedText)}
 		/>
 	);
 };

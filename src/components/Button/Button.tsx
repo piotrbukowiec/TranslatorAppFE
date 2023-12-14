@@ -1,6 +1,6 @@
 import React from 'react';
 interface Props {
-	sendForm: () => void;
+	sendForm: any;
 }
 export const Button = (props: Props) => {
 	return (

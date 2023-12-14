@@ -1,6 +1,18 @@
-import React, {useState} from 'react';
-export const TextToTranslateInput = () => {
+import React, { useState, ChangeEvent } from 'react';
+
+interface TextToTranslateInputProps {
+	onChange: (text: string) => void;
+}
+
+export const TextToTranslateInput: React.FC<TextToTranslateInputProps> = ({ onChange }) => {
 	const [text, setText] = useState('');
+
+	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+		const value = event.target.value;
+		setText(value);
+		onChange(value); // Wywołaj funkcję przekazaną przez props
+	};
+
 	return (
 		<input
 			type='text'
@@ -10,7 +22,7 @@ export const TextToTranslateInput = () => {
 			required
 			readOnly={false}
 			value={text}
-			onChange={event => setText(event.target.value)}
+			onChange={handleInputChange}
 		/>
 	);
 };
