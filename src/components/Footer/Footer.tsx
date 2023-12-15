@@ -6,7 +6,7 @@ export const Footer = () => {
 			<p>
 				Zbudowano z użyciem DeepL API
 				<br />
-				&copy; Piotr Bukowiec
+				&copy; Piotr Bukowiec in association with Qubic
 			</p>
 		</footer>
 	);
