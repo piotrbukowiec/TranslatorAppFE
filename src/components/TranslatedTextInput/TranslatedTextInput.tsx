@@ -19,12 +19,6 @@ export const TranslatedTextInput = ({ translatedText }: Props) => {
 		setTimeout(() => setIsCopied(false), 800);
 	}, [translatedText]);
 
-	const handleClick = useCallback(() => {
-		if (isCopied && !text) {
-			handleCopyToClipboard();
-		}
-	}, [isCopied, text, handleCopyToClipboard]);
-
 	return (
 		<>
 			{isCopied && text ? (
