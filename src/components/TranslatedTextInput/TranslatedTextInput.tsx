@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './TranslatedTextInput.css';
+
 interface Props {
 	translatedText: string;
 }
@@ -8,20 +9,24 @@ export const TranslatedTextInput = ({ translatedText }: Props) => {
 	const [text, setText] = useState('');
 	const [isCopied, setIsCopied] = useState(false);
 
-	useEffect(() => setText(translatedText), [translatedText]);
+	useEffect(() => {
+		setText(translatedText);
+	}, [translatedText]);
 
-	const handleCopyToClipboard = async () => {
+	const handleCopyToClipboard = useCallback(async () => {
 		await navigator.clipboard.writeText(translatedText);
 		setIsCopied(true);
+		setTimeout(() => setIsCopied(false), 800);
+	}, [translatedText]);
 
-		setTimeout(() => {
-			setIsCopied(false);
-		}, 800);
-	};
+	const handleClick = useCallback(() => {
+		if (isCopied && !text) {
+			handleCopyToClipboard();
+		}
+	}, [isCopied, text, handleCopyToClipboard]);
 
 	return (
 		<>
-			{/*It works*/}
 			{isCopied && text ? (
 				<p className='form-element' onClick={handleCopyToClipboard}>
 					Skopiowano do schowka!
