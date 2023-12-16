@@ -3,6 +3,7 @@ import { Button } from '../Button/Button';
 import { TranslatedTextInput } from '../TranslatedTextInput/TranslatedTextInput';
 import { TargetLangSelect } from '../TargetLangSelect/TargetLangSelect';
 import { TextToTranslateInput } from '../TextToTranslateInput/TextToTranslateInput';
+import './Form.css';
 
 export const Form: React.FC = () => {
 	const [translatedText, setTranslatedText] = useState('');
@@ -43,7 +44,7 @@ export const Form: React.FC = () => {
 		<form className='translator-form'>
 			<TextToTranslateInput onChange={handleTextToTranslateChange} />
 			<TargetLangSelect onTargetLangChange={handleTargetLangChange} />
-			<TranslatedTextInput text={translatedText} />
+			<TranslatedTextInput translatedText={translatedText} />
 			<Button sendForm={async () => await sendForm()} />
 		</form>
 	);
