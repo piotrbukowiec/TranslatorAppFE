@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Button } from '../Button/Button';
-import { TranslatedTextInput } from '../TranslatedTextInput/TranslatedTextInput';
+import { TranslatedTextP } from '../TranslatedTextP/TranslatedTextP';
 import { TargetLangSelect } from '../TargetLangSelect/TargetLangSelect';
 import { TextToTranslateInput } from '../TextToTranslateInput/TextToTranslateInput';
 import './Form.css';
+import { dataFromServer } from '../../types/dataFromServer';
 
 export const Form: React.FC = () => {
 	const [translatedText, setTranslatedText] = useState('');
@@ -24,7 +25,7 @@ export const Form: React.FC = () => {
 		});
 
 		if (res.ok) {
-			const result = await res.json();
+			const result: dataFromServer = await res.json();
 			console.log('Got translated text from server; ' + result.translatedText);
 			setTranslatedText(result.translatedText);
 		} else {
@@ -44,7 +45,7 @@ export const Form: React.FC = () => {
 		<form className='translator-form'>
 			<TextToTranslateInput onChange={handleTextToTranslateChange} />
 			<TargetLangSelect onTargetLangChange={handleTargetLangChange} />
-			<TranslatedTextInput translatedText={translatedText} />
+			<TranslatedTextP translatedText={translatedText} />
 			<Button sendForm={async () => await sendForm()} />
 		</form>
 	);

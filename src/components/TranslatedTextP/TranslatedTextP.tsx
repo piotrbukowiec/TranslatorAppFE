@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import './TranslatedTextInput.css';
 
 interface Props {
 	translatedText: string;
 }
 
-export const TranslatedTextInput = ({ translatedText }: Props) => {
+export const TranslatedTextP = ({ translatedText }: Props) => {
 	const [text, setText] = useState('');
 	const [isCopied, setIsCopied] = useState(false);
 
