@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { LanguageEntity, targetLanguageCodes } from '../../types/languageCodesArrays'
+import React, { useState } from 'react';
+import { LanguageEntity, targetLanguageCodes } from '../../utils/languageCodesArrays';
 
 interface TargetLangSelectProps {
-	onTargetLangChange: (selectedLang: string) => void
+	onTargetLangChange: (selectedLang: string) => void;
 }
 
 export const TargetLangSelect: React.FC<TargetLangSelectProps> = ({ onTargetLangChange }) => {
-	const [targetLang, setTargetLang] = useState('')
+	const [targetLang, setTargetLang] = useState('');
 
 	const handleTargetLangChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-		const value = event.target.value
-		setTargetLang(value)
-		onTargetLangChange(value) // Wywołaj funkcję przekazaną przez props do rodzica
-	}
+		const value = event.target.value;
+		setTargetLang(value);
+		onTargetLangChange(value); // Wywołaj funkcję przekazaną przez props do rodzica
+	};
 
 	return (
 		<select className='form-element' id='targetLanguage' required value={targetLang} onChange={handleTargetLangChange}>
@@ -25,5 +25,5 @@ export const TargetLangSelect: React.FC<TargetLangSelectProps> = ({ onTargetLang
 				</option>
 			))}
 		</select>
-	)
-}
+	);
+};
